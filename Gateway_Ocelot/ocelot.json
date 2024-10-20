@@ -1,0 +1,79 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7056"
+  },
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7056 // Gateway port
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 20
+      }
+    }
+  ]
+}
+
+
+/**
+  {
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7056"
+  },
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/invoices",
+      "UpstreamHttpMethod": ["Get"],
+      "DownstreamPathTemplate": "/api/invoices/all",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7257
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 20
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/invoices/{id}",
+      "UpstreamHttpMethod": ["Get"],
+      "DownstreamPathTemplate": "/api/invoices/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7257
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 20
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/{action}",
+      "UpstreamHttpMethod": ["Post", "Get"],
+      "DownstreamPathTemplate": "/api/auth/{action}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7182
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 20
+      }
+    }
+  ]
+}
+
+  **/
